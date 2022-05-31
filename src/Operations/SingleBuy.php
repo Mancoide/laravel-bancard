@@ -11,11 +11,15 @@ class SingleBuy extends Operation
     
     private string $description;
     private float $amount;
+    private bool $process_id;
+    private bool $pre_authorization;
 
-    public function __construct(string $description, float $amount)
+    public function __construct(string $description, float $amount, string $process_id = null, bool $pre_authorization = false)
     {
         $this->description = $description;
         $this->amount = $amount;
+        $this->process_id = $process_id;
+        $this->pre_authorization = $pre_authorization;
     }
 
     protected static function getResource(): string
@@ -25,7 +29,7 @@ class SingleBuy extends Operation
 
     protected function getPetition(): Petition
     {
-        return new SingleBuyPetition($this->description, $this->amount);
+        return new SingleBuyPetition($this->description, $this->amount, $this->process_id, $this->pre_authorization);
     }
 
     protected function handleSuccess(Petition $petition, Response $response): void

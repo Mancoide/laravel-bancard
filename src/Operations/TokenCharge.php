@@ -12,12 +12,16 @@ class TokenCharge extends Operation
     private string $description;
     private float $amount;
     private string $aliasToken;
+    private bool $process_id;
+    private bool $pre_authorization;
 
-    public function __construct(string $description, float $amount, string $aliasToken)
+    public function __construct(string $description, float $amount, string $aliasToken, string $process_id = null, bool $pre_authorization = false)
     {
         $this->description = $description;
         $this->amount = $amount;
         $this->aliasToken = $aliasToken;
+        $this->process_id = $process_id;
+        $this->pre_authorization = $pre_authorization;
     }
 
     protected static function getResource(): string
@@ -27,7 +31,7 @@ class TokenCharge extends Operation
 
     protected function getPetition(): Petition
     {
-        return new TokenCargePetition($this->description, $this->amount, $this->aliasToken);
+        return new TokenCargePetition($this->description, $this->amount, $this->aliasToken, $this->process_id, $this->pre_authorization);
     }
 
     protected function handleSuccess(Petition $petition, Response $response): void

@@ -3,6 +3,7 @@
 namespace Deviam\Bancard;
 
 use Deviam\Bancard\Operations\{
+    PreAuthorizationConfirm, 
     SingleBuy, 
     NewCard, 
     ListCards, 
@@ -53,11 +54,13 @@ class Bancard
      *
      * @param string $description Description of the payment.
      * @param float $amount Amount in Guaraníes.
+     * @param string|null $process_id (Optional) Order ID.
+     * @param bool $pre_authorize (Optional) Indicates if the order must be pre-authorized.
      * @return Response
      */
-    public static function singleBuy(string $description, float $amount): Response
+    public static function singleBuy(string $description, float $amount, string $process_id = null, bool $pre_authorize = false): Response
     {
-        $operation = new SingleBuy($description, $amount);
+        $operation = new SingleBuy($description, $amount, $process_id, $pre_authorize);
         return $operation->makeRequest();
     }
 
@@ -121,11 +124,13 @@ class Bancard
      * @param string $description
      * @param float $amount
      * @param string $aliasToken
+     * @param string|null $process_id (Optional) Order ID
+     * @param bool $pre_authorize (Optional) Indicates if the order must be pre-authorized.
      * @return Response
      */
-    public static function tokenCharge(string $description, float $amount, string $aliasToken): Response
+    public static function tokenCharge(string $description, float $amount, string $aliasToken, string $process_id = null, bool $pre_authorize = false): Response
     {
-        $operation = new TokenCharge($description, $amount, $aliasToken);
+        $operation = new TokenCharge($description, $amount, $aliasToken, $process_id, $pre_authorize);
         return $operation->makeRequest();
     }
 
@@ -138,6 +143,19 @@ class Bancard
     public static function confirmation(string $shopProcessId): Response
     {
         $operation = new Confirmation($shopProcessId);
+        return $operation->makeRequest();
+    }
+
+    /**
+     * Pre-Authorization Operation that confirm a pre-authorized payment
+     *
+     * @param string $shopProcessId
+     * @param float $amount (Optional) Amount to be confirmed, cannot be higher than the pre-authorized amount
+     * @return Response
+     */
+    public static function preAuthorizationConfirm(string $shopProcessId, float $amount = 0): Response
+    {
+        $operation = new PreAuthorizationConfirm($shopProcessId, $amount);
         return $operation->makeRequest();
     }
 

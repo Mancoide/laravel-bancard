@@ -20,12 +20,14 @@ class SingleBuy extends BaseModel
         'description', 
         'status', 
         'process_id', 
-        'zimple'
+        'zimple',
+        'pre_authorization'
     ];
 
     protected $casts = [
         'id' => 'string',
         'zimple' => 'boolean',
+        'pre_authorization' => 'boolean',
     ];
 
     protected static function booted()

@@ -9,12 +9,14 @@ class SingleBuy extends Petition
 {
     private SingleBuyModel $payload;
 
-    public function __construct(string $description, float $amount)
+    public function __construct(string $description, float $amount, string $process_id = null, bool $pre_authorization = false)
     {
         $payload = SingleBuyModel::create([
             'description' => $description, 
             'amount' => $amount, 
-            'currency' => 'PYG'
+            'currency' => 'PYG',
+            'process_id' => $process_id,
+            'pre_authorization' => $pre_authorization
         ]);
         $this->payload = SingleBuyModel::find($payload->id);
     }
@@ -29,7 +31,7 @@ class SingleBuy extends Petition
 
     public function getOperationPetition(): array
     {
-        return [
+        $data = [
             'public_key' => Bancard::publicKey(), 
             'operation' => [
                 'token' => $this->token(), 
@@ -42,6 +44,11 @@ class SingleBuy extends Petition
                 'cancel_url' => config('bancard.single_buy_cancel_url')
             ]
         ];
+
+        if ($this->payload->pre_authorization)
+            $data['operation']['preauthorization'] = 'S';
+
+        return $data;
     }
 
     public function handlePayload(array $data = []): void
