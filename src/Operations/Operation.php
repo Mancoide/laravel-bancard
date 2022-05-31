@@ -29,7 +29,7 @@ abstract class Operation
         $endpoint = self::getEndpoint();
 
         try {
-            $response = Http::$method($endpoint, $data)->throw();
+            $response = Http::timeout(config('bancard.request_timeout'))->$method($endpoint, $data)->throw();
             $this->handleSuccess($petition, $response);
         } catch (RequestException $exception) {
             $response = $exception->response;

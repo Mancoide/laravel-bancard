@@ -38,5 +38,7 @@ return [
     'single_buy_cancel_url' => env('BANCARD_SINGLE_BUY_CANCEL_URL', ''), 
     
     // The return URL for the New Card Operation
-    'new_card_return_url' => env('BANCARD_NEW_CARD_RETURN_URL', ''), 
+    'new_card_return_url' => env('BANCARD_NEW_CARD_RETURN_URL', ''),
+
+    'request_timeout' => env('BANCARD_REQUEST_TIMEOUT', 30),
 ];
