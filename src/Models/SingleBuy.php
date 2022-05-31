@@ -3,9 +3,8 @@
 namespace Deviam\Bancard\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 
-class SingleBuy extends Model
+class SingleBuy extends BaseModel
 {
     protected $table = 'bancard_single_buys';
 

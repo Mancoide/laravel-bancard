@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace Deviam\Bancard\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\{Model, Builder};
+use Illuminate\Database\Eloquent\Builder;
 
-class Card extends Model
+class Card extends BaseModel
 {
     protected $table = 'bancard_user_cards';
 
@@ -14,14 +14,14 @@ class Card extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'user_id', 
-        'user_cell_phone', 
-        'user_mail', 
-        'alias_token', 
-        'card_masked_number', 
-        'expiration_date', 
-        'card_brand', 
-        'card_type', 
+        'user_id',
+        'user_cell_phone',
+        'user_mail',
+        'alias_token',
+        'card_masked_number',
+        'expiration_date',
+        'card_brand',
+        'card_type',
         'active'
     ];
 

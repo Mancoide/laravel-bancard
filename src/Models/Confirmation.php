@@ -3,9 +3,8 @@
 namespace Deviam\Bancard\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 
-class Confirmation extends Model
+class Confirmation extends BaseModel
 {
     protected $table = 'bancard_confirmations';
 

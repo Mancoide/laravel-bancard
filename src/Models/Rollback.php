@@ -3,9 +3,8 @@
 namespace Deviam\Bancard\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 
-class Rollback extends Model
+class Rollback extends BaseModel
 {
     protected $table = 'bancard_rollbacks';
 

@@ -41,4 +41,6 @@ return [
     'new_card_return_url' => env('BANCARD_NEW_CARD_RETURN_URL', ''),
 
     'request_timeout' => env('BANCARD_REQUEST_TIMEOUT', 30),
+
+    'db_connection' => env('BANCARD_DB_CONNECTION', ''),
 ];
