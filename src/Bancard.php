@@ -7,6 +7,7 @@ use Deviam\Bancard\Operations\{
     NewCard, 
     ListCards, 
     DeleteCard, 
+    SingleBuyZimple, 
     TokenCharge, 
     Confirmation, 
     Rollback
@@ -57,6 +58,21 @@ class Bancard
     public static function singleBuy(string $description, float $amount): Response
     {
         $operation = new SingleBuy($description, $amount);
+        return $operation->makeRequest();
+    }
+
+    /**
+     * Start the payment process with zimple wallet.
+     *
+     * @param string $description Description of the payment.
+     * @param float $amount Amount in Guaraníes.
+     * @param string $phone_number Client phone number
+     * @param string|null $process_id Order ID
+     * @return Response
+     */
+    public static function singleBuyZimple(string $description, float $amount, string $phone_number, string $process_id = null): Response
+    {
+        $operation = new SingleBuyZimple($description, $amount, $phone_number, $process_id);
         return $operation->makeRequest();
     }
 
