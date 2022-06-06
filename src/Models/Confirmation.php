@@ -25,7 +25,9 @@ class Confirmation extends BaseModel
         'customer_ip', 
         'card_country', 
         'version', 
-        'risk_index'
+        'risk_index',
+        'amount',
+        'currency'
     ];
 
     protected $casts = [
