@@ -31,4 +31,4 @@ class AddPreAuthorizationsToSingleBuysTable extends Migration
             $table->dropColumn('pre_authorization');
         });
     }
-};
+}
