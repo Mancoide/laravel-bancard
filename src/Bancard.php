@@ -3,15 +3,16 @@
 namespace Deviam\Bancard;
 
 use Deviam\Bancard\Operations\{
-    PreAuthorizationConfirm, 
-    SingleBuy, 
-    NewCard, 
-    ListCards, 
-    DeleteCard, 
-    SingleBuyZimple, 
-    TokenCharge, 
-    Confirmation, 
-    Rollback
+    PreAuthorizationConfirm,
+    SingleBuy,
+    NewCard,
+    ListCards,
+    DeleteCard,
+    SingleBuyZimple,
+    TokenCharge,
+    Confirmation,
+    Rollback,
+    WebhookConfirm
 };
 use Illuminate\Http\Client\Response;
 
@@ -169,5 +170,16 @@ class Bancard
     {
         $operation = new Rollback($shopProcessId);
         return $operation->makeRequest();
+    }
+
+    /**
+     * Operation that parses the request sent by Bancard through the webhook
+     *
+     * @return array|null
+     */
+    public static function webhookConfirm(): ?array
+    {
+        $operation = new WebhookConfirm();
+        return $operation->parseRequest();
     }
 }
