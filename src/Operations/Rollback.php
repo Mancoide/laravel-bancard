@@ -30,4 +30,9 @@ class Rollback extends Operation
     {
         $petition->handlePayload($response->json());
     }
+
+    protected function handleError(Petition $petition, Response $response): void
+    {
+        $petition->handlePayload($response->json()); //Same as success
+    }
 }

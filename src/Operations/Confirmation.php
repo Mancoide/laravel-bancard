@@ -31,4 +31,22 @@ class Confirmation extends Operation
         $data = $response->json();
         $petition->handlePayload($data['confirmation']);
     }
+
+    protected function handleError(Petition $petition, Response $response): void
+    {
+        $data = $response->json();
+        if (!empty($data['messages']) && is_array($data['messages'])) {
+            foreach ($data['messages'] as $message) {
+                $petition->handlePayload([
+                    'shop_process_id'               => $this->shopProcessId,
+                    'response'                      => 'N',
+                    'response_details'              => $message['key'],
+                    'response_code'                 => 99, //Custom
+                    'response_description'          => $message['level'],
+                    'extended_response_description' => "{$message['dsc']}",
+                    'security_information'          => []
+                ]);
+            }
+        }
+    }
 }

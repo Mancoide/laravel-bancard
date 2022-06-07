@@ -15,6 +15,11 @@ abstract class Operation
 
     abstract protected function handleSuccess(Petition $petition, Response $response): void;
 
+    protected function handleError(Petition $petition, Response $response): void
+    {
+        // do nothing
+    }
+
     protected function getMethod(): string
     {
         return 'post';
@@ -33,7 +38,7 @@ abstract class Operation
             $this->handleSuccess($petition, $response);
         } catch (RequestException $exception) {
             $response = $exception->response;
-            // $this->handleError($response);
+            $this->handleError($petition, $response);
         }
 
         return $response;
