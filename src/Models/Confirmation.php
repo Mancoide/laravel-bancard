@@ -27,7 +27,8 @@ class Confirmation extends BaseModel
         'version', 
         'risk_index',
         'amount',
-        'currency'
+        'currency',
+        'command'
     ];
 
     protected $casts = [

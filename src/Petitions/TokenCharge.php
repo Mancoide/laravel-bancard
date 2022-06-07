@@ -57,7 +57,7 @@ class TokenCharge extends Petition
     {
         $securityInformation = $data['security_information'];
         unset($data['security_information']);
-        $confirmation = array_merge($data, $securityInformation);
+        $confirmation = array_merge($data, $securityInformation, ['command' => 'charge']);
 
         ConfirmationModel::create($confirmation);
     }

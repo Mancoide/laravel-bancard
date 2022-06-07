@@ -24,7 +24,7 @@ class WebhookConfirm
     {
         $securityInformation = $data['security_information'];
         unset($data['security_information']);
-        $confirmation = array_merge($data, $securityInformation);
+        $confirmation = array_merge($data, $securityInformation, ['command' => 'webhook/confirm']);
 
         ConfirmationModel::create($confirmation);
     }

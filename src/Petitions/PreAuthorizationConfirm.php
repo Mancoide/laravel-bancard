@@ -45,7 +45,7 @@ class PreAuthorizationConfirm extends Petition
     {
         $securityInformation = $data['security_information'];
         unset($data['security_information']);
-        $confirmation = array_merge($data, $securityInformation);
+        $confirmation = array_merge($data, $securityInformation, ['command' => 'preauthorizations/confirm']);
 
         ConfirmationModel::create($confirmation);
     }
