@@ -12,7 +12,7 @@ class TokenCharge extends Operation
     private string $description;
     private float $amount;
     private string $aliasToken;
-    private bool $process_id;
+    private string $process_id;
     private bool $pre_authorization;
 
     public function __construct(string $description, float $amount, string $aliasToken, string $process_id = null, bool $pre_authorization = false)

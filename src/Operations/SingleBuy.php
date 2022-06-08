@@ -11,7 +11,7 @@ class SingleBuy extends Operation
     
     private string $description;
     private float $amount;
-    private bool $process_id;
+    private string $process_id;
     private bool $pre_authorization;
 
     public function __construct(string $description, float $amount, string $process_id = null, bool $pre_authorization = false)
