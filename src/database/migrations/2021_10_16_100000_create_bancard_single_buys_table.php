@@ -15,6 +15,7 @@ class CreateBancardSingleBuysTable extends Migration
     {
         Schema::create('bancard_single_buys', function (Blueprint $table) {
             $table->id();
+            $table->increments('shop_process_id');
             $table->decimal('amount', 15, 2)->nullable();
             $table->string('currency', 3)->nullable();
             $table->string('additional_data', 100)->nullable();
@@ -24,8 +25,6 @@ class CreateBancardSingleBuysTable extends Migration
             $table->boolean('zimple')->default(false);
             $table->timestamps();
         });
-
-        DB::statement('ALTER Table bancard_single_buys add shop_process_id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
     }
 
     /**
