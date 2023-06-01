@@ -27,7 +27,7 @@ class CreateBancardUserCardsTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement('ALTER Table bancard_user_cards add card_id INTEGER NOT NULL UNIQUE SERIAL;');
+        DB::statement('ALTER TABLE bancard_user_cards ADD card_id SERIAL NOT NULL UNIQUE;');
 
     }
 
