@@ -14,11 +14,7 @@ class CreateBancardSingleBuysTable extends Migration
     public function up()
     {
         Schema::create('bancard_single_buys', function (Blueprint $table) {
-<<<<<<< HEAD
-            $table->uuid('id')->primary();
-=======
             $table->id();
->>>>>>> main
             $table->decimal('amount', 15, 2)->nullable();
             $table->string('currency', 3)->nullable();
             $table->string('additional_data', 100)->nullable();
