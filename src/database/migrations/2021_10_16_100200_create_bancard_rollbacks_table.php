@@ -14,7 +14,11 @@ class CreateBancardRollbacksTable extends Migration
     public function up()
     {
         Schema::create('bancard_rollbacks', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->uuid('id')->primary();
+=======
+            $table->id();
+>>>>>>> main
             $table->integer('shop_process_id');
             $table->string('status');
             $table->string('key');

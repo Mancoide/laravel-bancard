@@ -2,10 +2,20 @@
 
 ## Installation
 
+First Add next code to composer.json on your own proyect 
+```bash
+"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://git.dlstechnology.com.py/awesomedevelopers/laravel-bancard.git"
+        }
+    ]
+```
+
 Install via composer
 
 ```bash
-composer require deviam/laravel-bancard
+composer require Mancoide/laravel-bancard
 ```
 Publish config and migrations
 
