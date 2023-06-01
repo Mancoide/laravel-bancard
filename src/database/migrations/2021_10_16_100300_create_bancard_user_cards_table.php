@@ -14,7 +14,7 @@ class CreateBancardUserCardsTable extends Migration
     public function up()
     {
         Schema::create('bancard_user_cards', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('user_cell_phone');
             $table->string('user_mail');
