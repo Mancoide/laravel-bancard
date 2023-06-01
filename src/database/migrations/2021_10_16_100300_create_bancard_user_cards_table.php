@@ -15,6 +15,7 @@ class CreateBancardUserCardsTable extends Migration
     {
         Schema::create('bancard_user_cards', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('card_id')->unique();
             $table->unsignedBigInteger('user_id');
             $table->string('user_cell_phone');
             $table->string('user_mail');
@@ -26,8 +27,6 @@ class CreateBancardUserCardsTable extends Migration
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
-
-        DB::statement('ALTER Table bancard_user_cards add card_id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
     }
 
     /**
