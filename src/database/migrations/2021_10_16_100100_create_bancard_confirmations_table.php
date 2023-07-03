@@ -14,7 +14,7 @@ class CreateBancardConfirmationsTable extends Migration
     public function up()
     {
         Schema::create('bancard_confirmations', function (Blueprint $table) {
-            $table->id();
+            $table->text('id');
             $table->integer('shop_process_id');
             $table->string('response', 1)->nullable();
             $table->string('response_details', 60)->nullable();

@@ -38,12 +38,14 @@ class SingleBuy extends Petition
                 'shop_process_id' => $this->payload->shop_process_id, 
                 'currency' => $this->payload->currency, 
                 'amount' => "{$this->payload->amount}", 
-                'additional_data' => $this->payload->additional_data, 
-                'description' => $this->payload->description, 
+                'description' => $this->payload->description,
                 'return_url' => config('bancard.single_buy_return_url'), 
                 'cancel_url' => config('bancard.single_buy_cancel_url')
             ]
         ];
+
+        if($this->payload->additional_data)
+            $data['operation']['additional_data'] = $this->payload->additional_data;
 
         if ($this->payload->pre_authorization)
             $data['operation']['preauthorization'] = 'S';
